@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preventivo Fedi Nuziali</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Preventivo Fedi</h1>
+    <p>Calcolo costo in oro 18kt</p>
+  </header>
+
+  <!-- PARAMETRI (unificati: modalità, prezzi, incisione a mano) -->
+  <div class="card">
+    <div class="card-title">Parametri</div>
+
+    <div class="toggle-row">
+      <label class="toggle">
+        <input type="checkbox" id="flagCoppia" checked>
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="flagCoppiaLabel">Coppia</span>
+    </div>
+
+    <div class="form-row cols-4">
+      <div class="field">
+        <label>Prezzo spot oro (€/g)</label>
+        <input type="number" id="spotOro" value="85" min="1" step="0.01">
+      </div>
+      <div class="field">
+        <label>Coefficiente</label>
+        <input type="number" id="coefficiente" value="1.75" min="1" step="0.01">
+      </div>
+      <div class="field">
+        <label>Sconto fisso (€)</label>
+        <input type="number" id="scontoFisso" value="150" min="0" step="1">
+      </div>
+      <div class="field">
+        <label>IVA (%)</label>
+        <input type="number" id="iva" value="22" min="0" step="0.1">
+      </div>
+    </div>
+
+    <div class="extra-item params-extra">
+      <input type="checkbox" id="extra_incisione_mano" checked>
+      <label for="extra_incisione_mano" style="text-transform:none;font-size:0.8rem;letter-spacing:0.05em;cursor:pointer;">Incisione a mano</label>
+      <span class="extra-price">+ €40.00</span>
+    </div>
+  </div>
+
+  <!-- FEDI: lei e lui affiancate -->
+  <div class="fedi-group">
+
+    <!-- FEDE LEI -->
+    <div class="card" id="blockLei">
+      <div class="card-title">Fede — <span id="labelLei">Lei</span></div>
+      <div id="formLei">
+        <!-- injected by JS -->
+      </div>
+    </div>
+
+    <!-- FEDE LUI (solo se coppia) -->
+    <div class="card" id="blockLui">
+      <div class="card-title">Fede — Lui</div>
+      <div id="formLui">
+        <!-- injected by JS -->
+      </div>
+      <div class="toggle-row" style="margin-top:1rem; margin-bottom:0;">
+        <label class="toggle">
+          <input type="checkbox" id="flagLarghezzaDiversa">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">Larghezza diversa da lei</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COLORE ORO (condiviso) -->
+  <div class="card">
+    <div class="card-title">Colore oro</div>
+    <div class="field">
+      <label>Stesso colore per entrambe le fedi</label>
+      <div class="color-options" id="sharedColorOptions">
+        <!-- injected by JS -->
+      </div>
+      <span class="misura-hint" id="colorHint">Seleziona prima modello e larghezza per vedere i colori disponibili</span>
+    </div>
+  </div>
+
+  <button class="btn-calc" id="btnCalcola">Calcola preventivo</button>
+
+  <!-- RISULTATO -->
+  <div class="result-card hidden" id="risultato">
+    <div class="result-title">Dettaglio preventivo</div>
+    <div class="result-lines" id="resultLines"></div>
+  </div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

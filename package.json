@@ -1,0 +1,7 @@
+{
+  "name": "meda-gold-calculator",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx serve . -p 3456 --no-clipboard"
+  }
+}

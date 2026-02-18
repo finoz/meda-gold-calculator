@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6914;
+  --cream: #FAF7F2;
+  --ink: #1A1612;
+  --ink-soft: #4A3F35;
+  --line: #E2D9CC;
+  --rose: #C4856A;
+  --white-gold: #B0B8C1;
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Mono', monospace;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gold);
+}
+
+header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 2.8rem;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+}
+
+header p {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* SECTION CARD */
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* FORM ELEMENTS */
+.form-row {
+  display: grid;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+select, input[type="number"], input[type="text"] {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: var(--radius);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+select:focus, input:focus {
+  border-color: var(--gold);
+}
+
+select:disabled, input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* TOGGLE FLAG */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.toggle-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--line);
+  border-radius: 24px;
+  transition: background 0.2s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  left: 3px; top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.toggle input:checked + .toggle-slider { background: var(--gold); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* PERSON BLOCK */
+.person-block {
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.person-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.person-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* COLOR SWATCH */
+.color-options {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.color-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.color-btn:hover { transform: scale(1.1); }
+.color-btn.active { border-color: var(--ink); }
+.color-btn.disabled { opacity: 0.25; cursor: not-allowed; pointer-events: none; }
+.color-btn[data-color="GG"] { background: linear-gradient(135deg, #E8C55A, #C9A020); }
+.color-btn[data-color="BB"] { background: linear-gradient(135deg, #D8DDE3, #A8B0BB); }
+.color-btn[data-color="RR"] { background: linear-gradient(135deg, #D4907A, #B8624A); }
+
+/* EXTRAS */
+.extra-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.8rem;
+}
+
+.extra-item:last-child { border-bottom: none; }
+
+.extra-item input[type="checkbox"] {
+  width: 16px; height: 16px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.extra-item .extra-price {
+  margin-left: auto;
+  color: var(--gold-dark);
+  font-size: 0.75rem;
+}
+
+/* COEFFICIENTS */
+.coeff-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+}
+
+/* RISULTATO */
+.result-card {
+  background: var(--ink);
+  color: white;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.result-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+
+.result-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.result-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.result-line.highlight {
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.7rem 0;
+}
+
+.result-line.total {
+  border-top: 1px solid var(--gold);
+  border-bottom: none;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.result-line .amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: white;
+}
+
+.result-line.total .amount {
+  font-size: 1.6rem;
+  color: var(--gold-light);
+}
+
+.result-line.scontato .amount {
+  color: #9AE6B4;
+  font-size: 1.3rem;
+}
+
+/* CALC BUTTON */
+.btn-calc {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1.5rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-calc:hover { background: var(--gold-dark); color: white; }
+.btn-calc:active { transform: scale(0.99); }
+
+/* MISURA INPUT hint */
+.misura-hint {
+  font-size: 0.6rem;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+
+/* FEDI GROUP: lei e lui affiancate */
+.fedi-group {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.fedi-group .card {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+/* Extra nel blocco parametri: separatore sopra, no bordo sotto */
+.extra-item.params-extra {
+  border-top: 1px solid var(--line);
+  border-bottom: none;
+  margin-top: 0.75rem;
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-row.cols-2,
+  .form-row.cols-3,
+  .form-row.cols-4,
+  .coeff-row { grid-template-columns: 1fr; }
+  header h1 { font-size: 2rem; }
+  .fedi-group { flex-direction: column; }
+  .fedi-group .card { width: 100%; }
+}
+
+/* NOTA */
+.nota {
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.tag-misura {
+  display: inline-block;
+  font-size: 0.6rem;
+  background: var(--gold-light);
+  color: var(--gold-dark);
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+
+.hidden { display: none !important; }
