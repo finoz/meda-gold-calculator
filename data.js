@@ -3,8 +3,8 @@
 
 const DB = {
 
-  // Titolo dell'oro: 18kt = 75% oro puro
-  purity: 0.75,
+  // Titolo dell'oro: 18kt = 75% oro puro, arrotondato a 0.8 per eccesso
+  purity: 0.8,
 
   // Colori disponibili
   colors: {
