@@ -44,14 +44,8 @@ const DB = {
       hasSizeTiers: false,
       widths: {
         // DA COMPLETARE — inserisci i valori reali
-        "2.0":  { label: "2.0 mm",      colors: ["BB", "GG"],        weight: 1.5  },
         "3.4":  { label: "3.4 mm",      colors: ["BB", "GG"],        weight: 3.0  },
-        "3.4b": { label: "3.4 mm (40)", colors: ["BB", "GG"],        weight: 4.0  },
-        "3.6":  { label: "3.6 mm",      colors: ["BB", "GG", "RR"],  weight: 5.0  },
-        "4.0":  { label: "4.0 mm",      colors: ["GG"],              weight: 6.0  },
-        "4.5":  { label: "4.5 mm",      colors: ["BB", "GG"],        weight: 7.0  },
-        "4.6":  { label: "4.6 mm",      colors: ["GG"],              weight: 8.0  },
-        "5.1":  { label: "5.1 mm",      colors: ["GG"],              weight: 10.0 }
+        "4.0":  { label: "4.0 mm",      colors: ["GG"],              weight: 6.0  }
       }
     }
   },
